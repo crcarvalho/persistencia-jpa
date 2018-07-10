@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="cnDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/db_avaliacao_escola?useSSL=true" />
+		<property name="username" value="root" />
+		<property name="password" value="admin" />
+	</bean>
+
+	<bean id="jdbcEscolaDAO" class="br.com.fiap.dao.JdbcEscolaDAO">
+		<property name="dataSource" ref="cnDataSource" />
+	</bean>
+	<bean id="jdbcCursoCapacitacaoDAO" class="br.com.fiap.dao.JdbcCursoCapacitacaoDAO">
+		<property name="dataSource" ref="cnDataSource" />
+	</bean>
+	<bean id="jdbcCursoAlunoDAO" class="br.com.fiap.dao.JdbcCursoAlunoDAO">
+		<property name="dataSource" ref="cnDataSource" />
+	</bean>
+	<bean id="jdbcAlunoDAO" class="br.com.fiap.dao.JdbcAlunoDAO">
+		<property name="dataSource" ref="cnDataSource" />
+	</bean>
+</beans>
